@@ -1,0 +1,12 @@
+@import '../../scss/main';
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background:$primary-color;
+    color: $secondary-text-color;
+    text-align: center;
+    padding: 1rem;
+}

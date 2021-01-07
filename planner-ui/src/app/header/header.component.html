@@ -1,0 +1,26 @@
+<header>
+    <div class="menu-btn"(click)="toggleNavbar()">
+      <span class="menu-btn__burger"[ngClass]="{ 'open': navbarOpened }"></span>
+    </div>
+
+    <nav class="nav"[ngClass]="{ 'open': navbarOpened }">
+      <ul class="menu-nav"[ngClass]="{ 'open': navbarOpened }">
+        <li class="menu-nav__item"[ngClass]="{ 'open': navbarOpened }">
+          <a href="" class="menu-nav__link">
+            Home
+          </a>
+        </li>
+        <li class="menu-nav__item"[ngClass]="{ 'open': navbarOpened }">
+          <a href="" class="menu-nav__link">
+            About
+          </a>
+        </li>
+        <li class="menu-nav__item"[ngClass]="{ 'open': navbarOpened }">
+            <button  href="" class="menu-nav__link menu-nav__login">
+                <fa-icon [icon]="faSignInAlt"></fa-icon>
+                <span> Log in</span>
+            </button>
+        </li>
+      </ul>
+    </nav>
+</header>

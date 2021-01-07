@@ -1,0 +1,25 @@
+@include media-md{
+       
+    .menu-btn {
+      visibility: hidden;
+    }
+    .nav {
+      visibility: visible;
+      align-content: center;
+      .menu-nav {
+        display: block;
+        transform: translateY(0);
+        height: 100%;
+        text-align: right;
+        
+        &__item {
+          display: inline;
+          padding-right: 1.5rem;
+        }
+        &__link {
+          font-size: 1.2rem;
+          padding: 16px;
+        }
+      }
+    }
+  }
