@@ -73,6 +73,7 @@ header {
     }
     .menu-nav{
         display: flex;
+        margin: 0;
         flex-flow: column wrap;
         justify-content: center;
         height: 100vh;

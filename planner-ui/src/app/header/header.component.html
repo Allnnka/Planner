@@ -16,10 +16,10 @@
           </a>
         </li>
         <li class="menu-nav__item"[ngClass]="{ 'open': navbarOpened }">
-            <button  href="" class="menu-nav__link menu-nav__login">
+            <a class="menu-nav__link menu-nav__login" [routerLink]="['login']">
                 <fa-icon [icon]="faSignInAlt"></fa-icon>
                 <span> Log in</span>
-            </button>
+            </a>
         </li>
       </ul>
     </nav>
