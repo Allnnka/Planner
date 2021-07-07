@@ -1,5 +1,7 @@
 package com.planner.controller;
 
+import com.planner.dto.AuthenticationResponse;
+import com.planner.dto.LoginRequest;
 import com.planner.dto.RegisterRequest;
 import com.planner.service.AuthService;
 import lombok.AllArgsConstructor;
@@ -19,5 +21,10 @@ public class AuthController {
     public ResponseEntity<String> signup(@RequestBody RegisterRequest registerRequest){
         authServices.signup(registerRequest);
         return new ResponseEntity<>("User Registration Successful", HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public AuthenticationResponse login(@RequestBody LoginRequest loginRequest) throws Exception {
+        return authServices.login(loginRequest);
     }
 }

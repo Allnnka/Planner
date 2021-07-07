@@ -1,24 +1,29 @@
 package com.planner.service;
 
+import com.planner.dto.AuthenticationResponse;
+import com.planner.dto.LoginRequest;
 import com.planner.dto.RegisterRequest;
 import com.planner.model.User;
-import com.planner.model.VerificationToken;
 import com.planner.repository.UserRepository;
-import com.planner.repository.VerificationTokenRepository;
+import com.planner.security.JwtProvider;
 import lombok.AllArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.Instant;
-import java.util.UUID;
 
 @Service
 @AllArgsConstructor
 public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
-    private final VerificationTokenRepository verificationTokenRepository;
+    private final AuthenticationManager authenticationManager;
+    private JwtProvider jwtProvider;
 
     @Transactional
     public void signup(RegisterRequest registerRequest){
@@ -29,12 +34,10 @@ public class AuthService {
         user.setCreated(Instant.now());
         userRepository.save(user);
     }
-    private String generateVerificationToken(User user){
-        String token = UUID.randomUUID().toString();
-        VerificationToken verificationToken = new VerificationToken();
-        verificationToken.setToken(token);
-        verificationToken.setUser(user);
-        verificationTokenRepository.save(verificationToken);
-        return token;
+    public AuthenticationResponse login(LoginRequest loginRequest) throws Exception {
+        Authentication authentication= authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),loginRequest.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        String token=jwtProvider.generateToken(authentication);
+        return new AuthenticationResponse(token,loginRequest.getUsername());
     }
 }

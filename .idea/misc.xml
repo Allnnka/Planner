@@ -10,6 +10,10 @@
       </list>
     </option>
   </component>
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/Planner_backend/src/main/resources/springblog.jks" />
+    <file url="file://$PROJECT_DIR$/Planner_backend/src/main/resources/springblog.jks" />
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_14" project-jdk-name="14" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
