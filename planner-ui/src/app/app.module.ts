@@ -9,16 +9,10 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegistrationComponent } from './auth/registration/registration.component';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import {HttpClientModule} from '@angular/common/http'
 
-
-const routes=[
-  {
-    path:'login',component:LoginComponent
-  },
-  {
-    path:'registration', component:RegistrationComponent
-  }
-]
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,8 +24,10 @@ const routes=[
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes,{anchorScrolling:'disabled'}),
-    FontAwesomeModule
+    FontAwesomeModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

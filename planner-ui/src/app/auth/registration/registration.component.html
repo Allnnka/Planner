@@ -1,10 +1,26 @@
 <div class="containersinginup">
 	<div class="containersinginup__form containersinginup__register">
-		<form action="#">
+		<form [formGroup]="registrationForm" (ngSubmit)="registration()">
 			<h1>Create Account</h1>
-			<input class="containersinginup__form-input" type="text" placeholder="Name" />
-			<input class="containersinginup__form-input" type="email" placeholder="Email" />
-			<input class="containersinginup__form-input" type="password" placeholder="Password" />
+			<div>
+				<input class="containersinginup__form-input" type="text" [formControlName]="'username'" placeholder="Name" />
+				<span *ngIf="!registrationForm.get('username').valid && registrationForm.get('username').touched">
+					Please provide a valid username!
+				</span>
+			</div>
+			<div>
+				<input class="containersinginup__form-input" type="email" [formControlName]="'email'" placeholder="Email" />
+				<span *ngIf="!registrationForm.get('email').valid && registrationForm.get('email').touched">
+					Please provide a valid email!
+				</span>
+			</div>
+			<div>
+				<input class="containersinginup__form-input" type="password" [formControlName]="'password'" placeholder="Password" />
+				<span *ngIf="!registrationForm.get('password').valid && registrationForm.get('password').touched">
+					Please provide a valid password!
+				</span>
+			</div>
+
             <input class="containersinginup__form-input" type="password" placeholder="Repeat password" />
 			<button>Sign Up</button>
 		</form>

@@ -26,7 +26,7 @@ public class AuthService {
     private JwtProvider jwtProvider;
 
     @Transactional
-    public void signup(RegisterRequest registerRequest){
+    public void registration(RegisterRequest registerRequest){
         User user =new User();
         user.setUsername(registerRequest.getUsername());
         user.setEmail(registerRequest.getEmail());

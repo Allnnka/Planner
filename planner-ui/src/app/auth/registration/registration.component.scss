@@ -1,7 +1,8 @@
 @import '../../../scss/main';
 
 .containersinginup{
-    margin: 15vh auto;
+    top:15vh;
+    margin: 0 auto 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +16,7 @@
 	overflow: hidden;
 	width: 768px;
 	max-width: 100%;
-	min-height: 480px;
+	min-height: 500px;
     
     button {
         border-radius: 20px;
@@ -72,7 +73,5 @@
     }
     &__register{
         width: 50%;
-        opacity: 0;
-        //z-index: 1;
     }
 }
