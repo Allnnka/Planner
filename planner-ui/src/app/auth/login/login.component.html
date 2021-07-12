@@ -1,6 +1,6 @@
 <div class="containersinginup">
 	<div class="containersinginup__form containersinginup__login">
-		<form action="#">
+		<form [formGroup]="loginForm" (ngSubmit)="login()">
 			<div class="containersinginup__form-header" >Sign in</div>
 			<div class="social-container">
 				<a href="#" class="social"><i class="fa fa-facebook-square"></i></a>
@@ -8,8 +8,19 @@
 				<a href="#" class="social"><i class="fa fa-twitter-square"></i></a>
 			</div>
 			<span>or use your account</span>
-			<input class="containersinginup__form-input" type="email" placeholder="Email" />
-			<input class="containersinginup__form-input" type="password" placeholder="Password" />
+			<div>
+				<input class="containersinginup__form-input" type="email" placeholder="Email" [formControlName]="'username'"/>
+				<span *ngIf="!loginForm.get('username').valid && loginForm.get('username').touched">
+					Please provide a valid username!
+				</span>
+			</div>
+			<div>
+				<input class="containersinginup__form-input" type="password" placeholder="Password" [formControlName]="'password'" />
+				<span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
+					Please provide a valid password!
+				</span>
+			</div>
+			
             <p><a href="#">Forgot your password?</a></p>
 			<button>Sign In</button>
             <p><a routerLink='/registration'>Don't have account?</a></p>
