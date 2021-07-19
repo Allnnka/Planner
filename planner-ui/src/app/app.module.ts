@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http'
 import { NgxWebstorageModule } from 'ngx-webstorage';
+import { WorkspaceComponent } from './workspace/workspace.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
     HeaderComponent,
     HomeComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    WorkspaceComponent
   ],
   imports: [
     BrowserModule,
