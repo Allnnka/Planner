@@ -1,6 +1,32 @@
 <div class="box">
     <div class="box__about box__cell">
+        <p>Hello</p>
         
+        <div class="box__about-addform">
+            <h3>Add new event to your callendar!</h3>
+            <form [formGroup]="addEvent">
+                <div>
+                    <span>Select day: </span>
+                    <input type="date" value={{dataNow}}/>    
+                </div>
+              <div>
+                  <span>Hours: from </span>
+                  <input type="time">
+                  <span> to </span>
+                  <input type="time">
+              </div>
+              <div>
+                  <input type="text" placeholder="Title" >
+              </div>
+              <div>
+                  <textarea  placeholder="Description"></textarea>
+              </div>
+              <div>
+                  <input placeholder="Priority" type="text">
+              </div>
+              <button type="submit">Add</button>
+            </form>
+        </div>
     </div>
     <div class="box__left box__cell">
         <div class="box__header">
@@ -9,8 +35,33 @@
                 <p>{{clock}}</p>
             </div>
         </div>
-        <div class="box__planner">
-
+        <div class="box__workspace">
+            <div class="planner">
+                <div class="planner__week">
+                 <p>Monday</p>
+                 <p>Tuesday</p>
+                 <p>Wednesday</p>
+                 <p>Thursday</p>
+                 <p>Friday</p>
+                </div>
+                <div class="planner__time">
+                 <p>8:00</p>
+                 <p>9:00</p>
+                 <p>10:00</p>
+                 <p>11:00</p>
+                 <p>12:00</p>
+                 <p>13:00</p>
+                 <p>14:00</p>
+                 <p>15:00</p>
+                 <p>16:00</p>
+                 <p>17:00</p>
+                 <p>18:00</p>
+                 <p>19:00</p>
+               </div>
+               <div class="planner__content">
+                    
+               </div>
+            </div>
         </div>
     </div>
 </div>
