@@ -40,7 +40,7 @@ export class CreateTaskComponent implements OnInit {
     });
   }
   createTask(){
-    this.taskPayload.taskDate= this.createTaskForm.get('taskDate').value;
+    this.taskPayload.taskDate=new Date(this.createTaskForm.get('taskDate').value);
     this.taskPayload.startTask= this.createTaskForm.get('startTask').value;
     this.taskPayload.endTask= this.createTaskForm.get('endTask').value;
     this.taskPayload.title= this.createTaskForm.get('title').value;

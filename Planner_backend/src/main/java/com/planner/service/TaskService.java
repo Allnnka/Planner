@@ -10,6 +10,12 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
 @Service
 @AllArgsConstructor
 public class TaskService {
@@ -20,11 +26,14 @@ public class TaskService {
     public void save(TaskRequest taskRequest){
         Task task = new Task();
         //task.setEndTask(taskRequest.getEndTask());
+        LocalTime endTask = LocalTime.parse(taskRequest.getEndTask().toString());
+        task.setEndTask(endTask.toSecondOfDay());
+        LocalTime startTask = LocalTime.parse(taskRequest.getStartTask().toString());
+        task.setStartTask(startTask.toSecondOfDay());
         //task.setStartTask(taskRequest.getStartTask());
-        //task.setTaskDate(taskRequest.getTaskDate());
+        task.setTaskDate(taskRequest.getTaskDate());
         task.setDescription(taskRequest.getDescription());
-        //task.setPriority(taskRequest.getPriority());
-        task.setPriority(PriorityType.Low);
+        task.setPriority(taskRequest.getPriority());
         task.setTitle(taskRequest.getTitle());
         task.setUser(authService.getCurrentUser());
         taskRepository.save(task);

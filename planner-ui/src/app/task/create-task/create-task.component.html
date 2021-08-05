@@ -18,7 +18,11 @@
             <textarea  placeholder="Description" [formControlName]="'description'"></textarea>
         </div>
         <div class="addTask__inputGroup">
-            <input placeholder="Priority" type="text" [formControlName]="'priority'">
+            <select [formControlName]="'priority'">
+                <option value="Height">Height</option>
+                <option value="Middle">Middle</option>
+                <option value="Low">Low</option>
+            </select>
         </div>
         <button  type="submit">Add</button>
     </form>

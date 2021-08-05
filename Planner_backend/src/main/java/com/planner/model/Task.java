@@ -4,7 +4,8 @@ package com.planner.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Time;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Calendar;
 
 import static javax.persistence.FetchType.LAZY;
@@ -22,8 +23,8 @@ public class Task {
 
     @Temporal(TemporalType.DATE)
     private Calendar taskDate;
-    private Time startTask;
-    private Time endTask;
+    private int startTask;
+    private int endTask;
     private String title;
     private String description;
     private PriorityType priority;

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Time;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 
 @Data
@@ -14,8 +15,8 @@ import java.util.Calendar;
 public class TaskRequest {
     private Long taskId;
     private Calendar taskDate;
-    private Time startTask;
-    private Time endTask;
+    private String startTask;
+    private String endTask;
     private String title;
     private String description;
     private PriorityType priority;
