@@ -1,0 +1,48 @@
+@import '../../../scss/main';
+
+.addTask{
+   border-top: 3px solid whitesmoke;
+   color: whitesmoke;
+   font-family: cursive;
+   word-wrap:normal;
+   &__title{
+       font-weight: 700;
+       letter-spacing: 2px;
+   }
+   &__inputGroup{
+        input{
+            padding: 5px;
+            align-items: center;
+            margin:0 auto;
+            font-family: cursive;
+            border-radius: 5px;
+            border:none;
+        }
+        input[type=text],textarea{
+            min-width: 120px;
+            width: 90%;
+            font-size: 1rem;
+            font-family: cursive;
+            padding: 5px;
+            border-radius: 5px;
+            border:none;
+        }
+        
+        span{
+            margin-right:5px;
+        }
+       margin:10px 0 10px 0;
+   }
+   button{
+        padding: 10px;
+        width: 100px;
+        font-size: 1rem;
+        background-color: $third-color;
+        text-decoration: none;
+        border:none;
+        border-radius: 3px;
+        color: whitesmoke;
+        margin-right: 25px;
+        float: right;
+   }
+}

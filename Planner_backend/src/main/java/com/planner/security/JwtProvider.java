@@ -21,7 +21,7 @@ import static java.util.Date.from;
 @Service
 public class JwtProvider {
     private KeyStore keyStore;
-
+    private Long jwtExpirationInMillis=90000l;
     @PostConstruct
     public void init() throws Exception {
         try {
@@ -34,7 +34,7 @@ public class JwtProvider {
 
     }
 
-    public String generateToken(Authentication authentication) throws Exception {
+    public String generateToken(Authentication authentication)  {
         User principal = (User) authentication.getPrincipal();
         return Jwts.builder()
                 .setSubject(principal.getUsername())
@@ -42,12 +42,42 @@ public class JwtProvider {
                 .signWith(getPrivateKey())
                 .compact();
     }
-
-    private PrivateKey getPrivateKey() throws Exception {
+    public boolean validateToken(String jwt) {
+        parser().setSigningKey(getPublicKey()).parseClaimsJws(jwt);
+        return true;
+    }
+    private PublicKey getPublicKey() {
+        try {
+            return keyStore.getCertificate("springblog").getPublicKey();
+        } catch (KeyStoreException e) {
+            throw new RuntimeException("Exception occured while retrieving public key from keystore"+e);
+        }
+    }
+    private PrivateKey getPrivateKey() {
         try {
             return (PrivateKey) keyStore.getKey("springblog", "secret".toCharArray());
         } catch (KeyStoreException | NoSuchAlgorithmException | UnrecoverableKeyException e) {
-            throw new Exception("Exception occured while retrieving public key from keystore", e);
+            throw new RuntimeException("Exception occured while retrieving public key from keystore", e);
         }
+    }
+    public String getUsernameFromJwt(String token) {
+        Claims claims = parser()
+                .setSigningKey(getPublicKey())
+                .parseClaimsJws(token)
+                .getBody();
+
+        return claims.getSubject();
+    }
+
+    public String generateTokenWithUserName(String username) {
+        return Jwts.builder()
+                .setSubject(username)
+                .setIssuedAt(from(Instant.now()))
+                .signWith(getPrivateKey())
+                .setExpiration(Date.from(Instant.now().plusMillis(jwtExpirationInMillis)))
+                .compact();
+    }
+    public Long getJwtExpirationInMillis() {
+        return jwtExpirationInMillis;
     }
 }

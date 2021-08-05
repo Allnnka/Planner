@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/api/task")
+@RequestMapping("/api/tasks")
 @AllArgsConstructor
 public class TaskController {
     private final TaskService taskService;

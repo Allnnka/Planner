@@ -2,11 +2,13 @@ package com.planner.service;
 
 import com.planner.dto.AuthenticationResponse;
 import com.planner.dto.LoginRequest;
+import com.planner.dto.RefreshTokenRequest;
 import com.planner.dto.RegisterRequest;
 import com.planner.model.User;
 import com.planner.repository.UserRepository;
 import com.planner.security.JwtProvider;
 import lombok.AllArgsConstructor;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -24,8 +26,8 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final AuthenticationManager authenticationManager;
-    private JwtProvider jwtProvider;
-
+    private final JwtProvider jwtProvider;
+    private final RefreshTokenService refreshTokenService;
     @Transactional
     public void registration(RegisterRequest registerRequest){
         User user =new User();
@@ -35,16 +37,38 @@ public class AuthService {
         user.setCreated(Instant.now());
         userRepository.save(user);
     }
-    public AuthenticationResponse login(LoginRequest loginRequest) throws Exception {
-        Authentication authentication= authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),loginRequest.getPassword()));
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        String token=jwtProvider.generateToken(authentication);
-        return new AuthenticationResponse(token,loginRequest.getUsername());
+    public AuthenticationResponse login(LoginRequest loginRequest) {
+        Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),
+                loginRequest.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authenticate);
+        String token = jwtProvider.generateToken(authenticate);
+        return AuthenticationResponse.builder()
+                .authenticationToken(token)
+                .refreshToken(refreshTokenService.generateRefreshToken().getToken())
+                .expiresAt(Instant.now().plusMillis(jwtProvider.getJwtExpirationInMillis()))
+                .username(loginRequest.getUsername())
+                .build();
+    }
+
+    public AuthenticationResponse refreshToken(RefreshTokenRequest refreshTokenRequest) {
+        refreshTokenService.validateRefreshToken(refreshTokenRequest.getRefreshToken());
+        String token = jwtProvider.generateTokenWithUserName(refreshTokenRequest.getUsername());
+        return AuthenticationResponse.builder()
+                .authenticationToken(token)
+                .refreshToken(refreshTokenRequest.getRefreshToken())
+                .expiresAt(Instant.now().plusMillis(jwtProvider.getJwtExpirationInMillis()))
+                .username(refreshTokenRequest.getUsername())
+                .build();
     }
     public User getCurrentUser(){
         org.springframework.security.core.userdetails.User principal =(org.springframework.security.core.userdetails.User)SecurityContextHolder.getContext()
                 .getAuthentication().getPrincipal();
         return userRepository.findByUsername(principal.getUsername())
                 .orElseThrow(()->new UsernameNotFoundException("User not found - "+principal.getUsername()));
+    }
+
+    public boolean isLoggedIn() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return !(authentication instanceof AnonymousAuthenticationToken) && authentication.isAuthenticated();
     }
 }

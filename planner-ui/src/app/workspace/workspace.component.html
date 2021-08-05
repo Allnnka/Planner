@@ -1,32 +1,7 @@
 <div class="box">
     <div class="box__about box__cell">
         <p>Hello</p>
-        
-        <div class="box__about-addform">
-            <h3>Add new event to your callendar!</h3>
-            <form [formGroup]="addEvent">
-                <div>
-                    <span>Select day: </span>
-                    <input type="date" value={{dataNow}}/>    
-                </div>
-              <div>
-                  <span>Hours: from </span>
-                  <input type="time">
-                  <span> to </span>
-                  <input type="time">
-              </div>
-              <div>
-                  <input type="text" placeholder="Title" >
-              </div>
-              <div>
-                  <textarea  placeholder="Description"></textarea>
-              </div>
-              <div>
-                  <input placeholder="Priority" type="text">
-              </div>
-              <button type="submit">Add</button>
-            </form>
-        </div>
+        <app-create-task></app-create-task>
     </div>
     <div class="box__left box__cell">
         <div class="box__header">

@@ -1,0 +1,25 @@
+<div class="addTask">
+    <h3 class="addTask__title">Add new event to your callendar!</h3>
+    <form [formGroup]="createTaskForm" (ngSubmit)="createTask()">
+        <div class="addTask__inputGroup">
+            <span>Select day: </span>
+            <input type="date" [formControlName]="'taskDate'"/>    
+        </div>
+        <div class="addTask__inputGroup">
+            <span>Hours: from </span>
+            <input type="time" [formControlName]="'startTask'">
+            <span> to </span>
+            <input type="time" [formControlName]="'endTask'">
+        </div>
+        <div class="addTask__inputGroup">
+            <input type="text" placeholder="Title" [formControlName]="'title'">
+        </div>
+        <div class="addTask__inputGroup">
+            <textarea  placeholder="Description" [formControlName]="'description'"></textarea>
+        </div>
+        <div class="addTask__inputGroup">
+            <input placeholder="Priority" type="text" [formControlName]="'priority'">
+        </div>
+        <button  type="submit">Add</button>
+    </form>
+</div>

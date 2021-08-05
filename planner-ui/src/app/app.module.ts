@@ -11,9 +11,11 @@ import { RegistrationComponent } from './auth/registration/registration.componen
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { WorkspaceComponent } from './workspace/workspace.component';
+import { CreateTaskComponent } from './task/create-task/create-task.component';
+import { TokenInterceptor } from './token-interceptron';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { WorkspaceComponent } from './workspace/workspace.component';
     HomeComponent,
     LoginComponent,
     RegistrationComponent,
-    WorkspaceComponent
+    WorkspaceComponent,
+    CreateTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,13 @@ import { WorkspaceComponent } from './workspace/workspace.component';
     HttpClientModule,
     NgxWebstorageModule.forRoot()
   ],
-  providers: [],
+  providers: [ 
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

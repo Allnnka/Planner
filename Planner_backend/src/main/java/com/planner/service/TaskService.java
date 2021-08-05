@@ -1,6 +1,7 @@
 package com.planner.service;
 
 import com.planner.dto.TaskRequest;
+import com.planner.model.PriorityType;
 import com.planner.model.Task;
 import com.planner.model.User;
 import com.planner.repository.TaskRepository;
@@ -18,11 +19,12 @@ public class TaskService {
 
     public void save(TaskRequest taskRequest){
         Task task = new Task();
-        task.setEndTask(taskRequest.getEndTask());
-        task.setStartTask(taskRequest.getStartTask());
-        task.setTaskDate(taskRequest.getTaskDate());
+        //task.setEndTask(taskRequest.getEndTask());
+        //task.setStartTask(taskRequest.getStartTask());
+        //task.setTaskDate(taskRequest.getTaskDate());
         task.setDescription(taskRequest.getDescription());
-        task.setPriority(taskRequest.getPriority());
+        //task.setPriority(taskRequest.getPriority());
+        task.setPriority(PriorityType.Low);
         task.setTitle(taskRequest.getTitle());
         task.setUser(authService.getCurrentUser());
         taskRepository.save(task);

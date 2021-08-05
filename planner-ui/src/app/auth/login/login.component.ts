@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../shared/auth.service';
 import { LoginRequestPayload } from './login-request.payload';
 
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   loginForm:FormGroup;
   loginRequestPayload:LoginRequestPayload;
-  constructor(private authService:AuthService) {
+  constructor(private router:Router, private authService:AuthService) {
     this.loginRequestPayload={
       username:'',
       password:''
@@ -30,7 +31,8 @@ export class LoginComponent implements OnInit {
     this.loginRequestPayload.username= this.loginForm.get('username').value;
     this.loginRequestPayload.password= this.loginForm.get('password').value;
 
-    this.authService.login(this.loginRequestPayload).subscribe(date=>{
+    this.authService.login(this.loginRequestPayload).subscribe(()=>{
+      this.router.navigateByUrl("/planner");
       console.log('Login Successful');
     });
   }

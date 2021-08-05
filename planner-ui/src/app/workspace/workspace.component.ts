@@ -7,7 +7,6 @@ import {GetDataNow, GetFormatDate,GetTime} from '../utils/data.utils';
   styleUrls: ['./workspace.component.scss']
 })
 export class WorkspaceComponent implements OnInit {
-  addEvent:FormGroup;
   clock:string;
   constructor() {
     setInterval(()=>this.Clock(),1000)
@@ -17,7 +16,6 @@ export class WorkspaceComponent implements OnInit {
   ngOnInit(): void {
   }
   initialCount:string=GetFormatDate();
-  public dataNow:string=GetDataNow();
   Clock(): void {
     this.clock=GetTime();
   }
