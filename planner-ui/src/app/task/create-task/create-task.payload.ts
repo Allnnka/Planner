@@ -1,9 +1,9 @@
 import { Time } from "@angular/common";
 
-export class CreateTaskPayload{
+export class TaskPayload{
     taskDate:Date;
-    startTask:String;
-    endTask:String;
+    startTask:Date;
+    endTask:Date;
     title:string;
     description?:string;
     priority?:string;

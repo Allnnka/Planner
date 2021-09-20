@@ -23,8 +23,8 @@ public class Task {
 
     @Temporal(TemporalType.DATE)
     private Calendar taskDate;
-    private int startTask;
-    private int endTask;
+    private Calendar startTask;
+    private Calendar endTask;
     private String title;
     private String description;
     private PriorityType priority;

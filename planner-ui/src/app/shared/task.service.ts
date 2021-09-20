@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CreateTaskPayload } from '../task/create-task/create-task.payload';
+import { TaskPayload } from '../task/create-task/create-task.payload';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +9,10 @@ import { CreateTaskPayload } from '../task/create-task/create-task.payload';
 export class TaskService {
   constructor(private http:HttpClient) { }
 
-  createPost(taskPayload:CreateTaskPayload):Observable<any>{
+  createTask(taskPayload:TaskPayload):Observable<any>{
     return this.http.post('http://localhost:8080/api/tasks/',taskPayload);
   }
-  
+  getAllTasks():Observable<any>{
+    return this.http.get('http://localhost:8080/api/tasks/')
+  }
 }

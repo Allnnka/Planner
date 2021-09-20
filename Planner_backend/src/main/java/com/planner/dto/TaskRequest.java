@@ -15,8 +15,8 @@ import java.util.Calendar;
 public class TaskRequest {
     private Long taskId;
     private Calendar taskDate;
-    private String startTask;
-    private String endTask;
+    private Calendar startTask;
+    private Calendar endTask;
     private String title;
     private String description;
     private PriorityType priority;

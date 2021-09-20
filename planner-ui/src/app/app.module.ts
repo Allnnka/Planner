@@ -16,6 +16,7 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
 import { WorkspaceComponent } from './workspace/workspace.component';
 import { CreateTaskComponent } from './task/create-task/create-task.component';
 import { TokenInterceptor } from './token-interceptron';
+import { PlannerComponent } from './workspace/planner/planner.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TokenInterceptor } from './token-interceptron';
     LoginComponent,
     RegistrationComponent,
     WorkspaceComponent,
-    CreateTaskComponent
+    CreateTaskComponent,
+    PlannerComponent
   ],
   imports: [
     BrowserModule,

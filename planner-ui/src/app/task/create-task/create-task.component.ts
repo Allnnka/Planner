@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 import { TaskService } from 'src/app/shared/task.service';
 import { GetDataNow } from 'src/app/utils/data.utils';
-import { CreateTaskPayload } from './create-task.payload';
+import { TaskPayload } from './create-task.payload';
 
 @Component({
   selector: 'app-create-task',
@@ -14,7 +14,7 @@ import { CreateTaskPayload } from './create-task.payload';
 export class CreateTaskComponent implements OnInit {
 
   createTaskForm:FormGroup;
-  taskPayload:CreateTaskPayload;
+  taskPayload:TaskPayload;
   dataNow:string;
   constructor(private router:Router, private taskService:TaskService) { 
     this.taskPayload={
@@ -41,12 +41,12 @@ export class CreateTaskComponent implements OnInit {
   }
   createTask(){
     this.taskPayload.taskDate=new Date(this.createTaskForm.get('taskDate').value);
-    this.taskPayload.startTask= this.createTaskForm.get('startTask').value;
-    this.taskPayload.endTask= this.createTaskForm.get('endTask').value;
+    this.taskPayload.startTask= new Date('01/01/1970 '+this.createTaskForm.get('startTask').value);
+    this.taskPayload.endTask= new Date('01/01/1970 '+this.createTaskForm.get('endTask').value);
     this.taskPayload.title= this.createTaskForm.get('title').value;
     this.taskPayload.description= this.createTaskForm.get('description').value;
     this.taskPayload.priority= this.createTaskForm.get('priority').value;
-    this.taskService.createPost(this.taskPayload).subscribe(()=>{
+    this.taskService.createTask(this.taskPayload).subscribe(()=>{
       console.log("Post Create Successfully!!!");
     },error=>{
       throwError(error);
