@@ -25,7 +25,6 @@ export class PlannerComponent implements OnInit {
   
   Test(){
     this.weekTasks=GetThisWeekTasks(this.tasks);
-    console.log(typeof(this.weekTasks[0].startTask))
     for (let i = 8; i <= 19; i++) {
       this.numOfOurs.push(i)
     }

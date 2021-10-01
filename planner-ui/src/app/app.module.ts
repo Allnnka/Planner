@@ -28,7 +28,7 @@ import { PlannerComponent } from './workspace/planner/planner.component';
     RegistrationComponent,
     WorkspaceComponent,
     CreateTaskComponent,
-    PlannerComponent
+    PlannerComponent,
   ],
   imports: [
     BrowserModule,

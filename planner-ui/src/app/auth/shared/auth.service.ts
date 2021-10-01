@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { RegistrationRequestPayload } from '../registration/registration-request.payload';
 import { LoginRequestPayload } from '../login/login-request.payload';
@@ -11,13 +11,14 @@ import { map, tap } from 'rxjs/operators';
 })
 export class AuthService {
  
+  refreshTokenPayload = {
+    refreshToken: this.getRefreshToken(),
+    username: this.getUserName()
+  }
+  
   refreshToken() {
-    const refreshTokenPayload = {
-      refreshToken: this.getRefreshToken(),
-      username: this.getUserName()
-    }
     return this.httpClient.post<LoginResponse>('http://localhost:8080/api/auth/refresh/token',
-    refreshTokenPayload)
+    this.refreshTokenPayload)
     .pipe(tap(response => {
       this.localStorage.clear('authenticationToken');
       this.localStorage.clear('expiresAt');
@@ -43,6 +44,19 @@ export class AuthService {
         return true;
       }));
   }
+  logout(){
+    this.httpClient.post('http://localhost:8080/api/auth/logout', this.refreshTokenPayload,
+      { responseType: 'text' })
+      .subscribe(data => {
+        console.log(data);
+      }, error => {
+        throwError(error);
+      })
+    this.localStorage.clear('authenticationToken');
+    this.localStorage.clear('username');
+    this.localStorage.clear('refreshToken');
+    this.localStorage.clear('expiresAt');
+  }
   getJwtToken() {
     return this.localStorage.retrieve('authenticationToken');
   }
@@ -55,4 +69,5 @@ export class AuthService {
   getRefreshToken() {
     return this.localStorage.retrieve('refreshToken');
   }
+  
 }

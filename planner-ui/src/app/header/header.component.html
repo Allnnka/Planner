@@ -6,6 +6,11 @@
     <nav class="nav"[ngClass]="{ 'open': navbarOpened }">
       <ul class="menu-nav"[ngClass]="{ 'open': navbarOpened }">
         <li class="menu-nav__item"[ngClass]="{ 'open': navbarOpened }">
+          <a routerLink='/planner' class="menu-nav__link">
+            Planner
+          </a>
+        </li>
+        <li class="menu-nav__item"[ngClass]="{ 'open': navbarOpened }">
           <a href="" class="menu-nav__link">
             Home
           </a>
@@ -15,11 +20,17 @@
             About
           </a>
         </li>
-        <li class="menu-nav__item"[ngClass]="{ 'open': navbarOpened }">
+        <li class="menu-nav__item"[ngClass]="{ 'open': navbarOpened }" *ngIf="auth.isLoggedIn() === false">
             <a class="menu-nav__link menu-nav__login" routerLink='/login'>
                 <fa-icon [icon]="faSignInAlt"></fa-icon>
                 <span> Log in</span>
             </a>
+        </li>
+        <li class="menu-nav__item"[ngClass]="{ 'open': navbarOpened }" *ngIf="auth.isLoggedIn()">
+          <a class="menu-nav__link menu-nav__login" (click)="logout()" routerLink='/'>
+              <fa-icon [icon]="faSignOutAlt"></fa-icon>
+              <span> Log out</span>
+          </a>
         </li>
       </ul>
     </nav>

@@ -25,7 +25,6 @@ export class CreateTaskComponent implements OnInit {
       description:'',
       priority:''
     }
-    console.log(this.taskPayload.taskDate);
     this.dataNow=GetDataNow();
   }
   
