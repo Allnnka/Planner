@@ -17,6 +17,7 @@ import { WorkspaceComponent } from './workspace/workspace.component';
 import { CreateTaskComponent } from './task/create-task/create-task.component';
 import { TokenInterceptor } from './token-interceptron';
 import { PlannerComponent } from './workspace/planner/planner.component';
+import { TaskInfoComponent } from './workspace/task-info/task-info.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,8 @@ import { PlannerComponent } from './workspace/planner/planner.component';
     WorkspaceComponent,
     CreateTaskComponent,
     PlannerComponent,
+    TaskInfoComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -36,13 +39,13 @@ import { PlannerComponent } from './workspace/planner/planner.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxWebstorageModule.forRoot()
+    NgxWebstorageModule.forRoot(),
   ],
   providers: [ 
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
-      multi: true
+      multi: true,
     }
   ],
   bootstrap: [AppComponent]

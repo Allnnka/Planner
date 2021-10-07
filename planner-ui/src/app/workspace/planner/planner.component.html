@@ -22,19 +22,28 @@
   </div>
   <div class="planner__content">
     <div *ngFor="let i of numOfDays">
-      <div *ngFor="let j of numOfOurs">
-        <div *ngFor="let task of weekTasks">
-          <div *ngIf='task.taskDate.getDay()==i && task.startTask.getHours()<=j && task.endTask.getHours()>=j; else elseBlock'>
-            <p style="padding: 5px;">
-              {{j}} - {{task.startTask.getHours()}} -{{task.endTask.getHours()}}
-            </p>
+      <div *ngFor="let j of numOfOurs" class="planner__grid">
+          <div *ngFor="let task of weekTasks">
+            <div *ngIf='task.taskDate.getDay()==i && task.startTask.getHours()<=j && task.endTask.getHours()>=j' >
+                <div *ngIf='task.taskDate.getDay()==i && task.startTask.getHours()<=j+1 && task.endTask.getHours()>=j+1;else elseBlock'>
+                  <div class="planner__content-cell" style="height: 80px; background-color: rebeccapurple;">
+                    <div *ngIf='task.startTask.getHours()==j'>
+                      {{task.title}}
+                    </div>
+                    <div *ngIf='task.endTask.getHours()==j'>
+                      {{task.description}}
+                    </div>
+                  </div>
+                </div>
+                <ng-template #elseBlock>
+                   <div class="planner__content-cell" style="background-color: brown;">
+                    <div *ngIf='task.startTask.getHours()==j'>
+                      {{task.title}} - {{task.description}}
+                    </div>
+                  </div>
+                </ng-template>
+            </div>
           </div>
-          <ng-template #elseBlock>
-            <p style="padding: 5px;">
-              hehe - {{i}} - {{j}}
-            </p>
-          </ng-template>
-        </div>
       </div>
     </div>
   </div>

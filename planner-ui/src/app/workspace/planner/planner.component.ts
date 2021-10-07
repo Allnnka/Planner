@@ -20,11 +20,11 @@ export class PlannerComponent implements OnInit {
         this.tasks=task;
         this.Test()
     })
-   
   }
   
   Test(){
     this.weekTasks=GetThisWeekTasks(this.tasks);
+    console.log(this.weekTasks);
     for (let i = 8; i <= 19; i++) {
       this.numOfOurs.push(i)
     }
@@ -33,6 +33,10 @@ export class PlannerComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-  }
 
+  }
+  randomColor(){
+    return 'rgb(255,255,)'+(Math.floor(Math.random()*255))+')';
+  }
+  
 }

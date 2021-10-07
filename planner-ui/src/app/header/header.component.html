@@ -5,7 +5,7 @@
 
     <nav class="nav"[ngClass]="{ 'open': navbarOpened }">
       <ul class="menu-nav"[ngClass]="{ 'open': navbarOpened }">
-        <li class="menu-nav__item"[ngClass]="{ 'open': navbarOpened }">
+        <li class="menu-nav__item"[ngClass]="{ 'open': navbarOpened }" *ngIf="auth.isLoggedIn()">
           <a routerLink='/planner' class="menu-nav__link">
             Planner
           </a>

@@ -36,5 +36,18 @@
         border-bottom: 1px solid black;
         border-right: 1px solid black;
         padding-top:10px;
+       
+        &-cell{
+            text-align: center;
+            width: 100%; 
+            display: block;
+            height: 40px;
+            div{
+                padding: 10px;
+            }
+        }
+    }
+    &__grid{
+        height: 40px;
     }
 }
