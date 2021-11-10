@@ -47,6 +47,7 @@ export class CreateTaskComponent implements OnInit {
     this.taskPayload.priority= this.createTaskForm.get('priority').value;
     this.taskService.createTask(this.taskPayload).subscribe(()=>{
       console.log("Post Create Successfully!!!");
+      //window.location.reload();
     },error=>{
       throwError(error);
     })

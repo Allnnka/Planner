@@ -7,4 +7,6 @@ export class TaskPayload{
     title:string;
     description?:string;
     priority?:string;
+    taskId?:number;
+    
 }

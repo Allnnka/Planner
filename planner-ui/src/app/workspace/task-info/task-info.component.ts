@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ModalService } from 'src/app/modal/modal.service';
+import { TaskPayload } from 'src/app/task/create-task/create-task.payload';
 
 @Component({
   selector: 'app-task-info',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskInfoComponent implements OnInit {
 
-  constructor() { }
+  @Input() public modalTask:TaskPayload;
+
+  constructor(private modalService: ModalService) {
+    this.openModal('task-info-modal');
+   }
 
   ngOnInit(): void {
   }
+  public openModal(id: string) {
+    this.modalService.open(id);
+  }
 
+  closeModal(id: string) {
+      this.modalService.close(id);
+  }
 }

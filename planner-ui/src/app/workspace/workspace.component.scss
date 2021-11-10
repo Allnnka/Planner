@@ -11,7 +11,11 @@
         min-height:280px;
         margin-right: 20px;
         padding: 15px;
-        
+        p{
+            color: $third-color;
+            font-weight: 600;
+            font-size: 20px;
+        }
     }
     &__left{
         float:right; 

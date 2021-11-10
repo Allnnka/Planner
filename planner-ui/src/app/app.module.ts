@@ -8,7 +8,6 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegistrationComponent } from './auth/registration/registration.component';
-import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
@@ -18,6 +17,7 @@ import { CreateTaskComponent } from './task/create-task/create-task.component';
 import { TokenInterceptor } from './token-interceptron';
 import { PlannerComponent } from './workspace/planner/planner.component';
 import { TaskInfoComponent } from './workspace/task-info/task-info.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { TaskInfoComponent } from './workspace/task-info/task-info.component';
     CreateTaskComponent,
     PlannerComponent,
     TaskInfoComponent,
-    
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
