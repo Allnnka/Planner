@@ -1,0 +1,49 @@
+<div class='table__box'>
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="taskDate">
+      <th mat-header-cell *matHeaderCellDef>
+        Task date
+      </th>
+      <td mat-cell *matCellDef="let element"> {{element.taskDate | date:'EEEE, MMMM d'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="startTask">
+      <th mat-header-cell *matHeaderCellDef>
+        Start task time
+      </th>
+      <td mat-cell *matCellDef="let element"> {{element.startTask | date:'HH : mm'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="endTask">
+      <th mat-header-cell *matHeaderCellDef>
+        End task time
+      </th>
+      <td mat-cell *matCellDef="let element"> {{element.endTask | date:'HH : mm'}}</td>
+    </ng-container>
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>
+        Title
+      </th>
+      <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+    </ng-container>
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>
+        Description
+      </th>
+      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+    <ng-container matColumnDef="priority">
+      <th mat-header-cell *matHeaderCellDef>
+        Priority
+      </th>
+      <td mat-cell *matCellDef="let element"> {{element.priority}} </td>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef>
+        Delete
+      </th>
+      <td mat-cell *matCellDef="let element"><button> <fa-icon [icon]="faTresh"></fa-icon> </button></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

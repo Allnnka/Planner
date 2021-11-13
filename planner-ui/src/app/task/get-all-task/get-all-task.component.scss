@@ -1,0 +1,20 @@
+@import '../../../scss/main';
+
+
+table {
+    width: 100%;
+    th{
+        background-color: $primary-color;
+        color: $secondary-text-color;
+    }
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+.table__box {
+    padding: 50px;
+    width: 80%;
+    margin: 30px auto 0 auto;
+    justify-content: center;
+}

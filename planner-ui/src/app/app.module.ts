@@ -1,7 +1,6 @@
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
@@ -18,6 +17,9 @@ import { TokenInterceptor } from './token-interceptron';
 import { PlannerComponent } from './workspace/planner/planner.component';
 import { TaskInfoComponent } from './workspace/task-info/task-info.component';
 import { ModalComponent } from './modal/modal.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GetAllTaskComponent } from './task/get-all-task/get-all-task.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { ModalComponent } from './modal/modal.component';
     PlannerComponent,
     TaskInfoComponent,
     ModalComponent,
+    GetAllTaskComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,8 @@ import { ModalComponent } from './modal/modal.component';
     ReactiveFormsModule,
     HttpClientModule,
     NgxWebstorageModule.forRoot(),
+    BrowserAnimationsModule,
+    MatTableModule
   ],
   providers: [ 
     {

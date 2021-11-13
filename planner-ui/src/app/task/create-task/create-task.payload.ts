@@ -8,5 +8,4 @@ export class TaskPayload{
     description?:string;
     priority?:string;
     taskId?:number;
-    
 }
