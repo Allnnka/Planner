@@ -41,6 +41,13 @@
             font-size: 1.1rem;
             letter-spacing: 3px;
             font-family: cursive;
+            width: 25%;
+        }
+        &-weather{
+            width: 60%;
+            padding:7px;
+            float:right;
+            font-family: cursive;
         }
     }
     &__workspace{

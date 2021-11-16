@@ -1,0 +1,45 @@
+@import '../../../scss/main';
+
+.weather{
+   display: grid;
+   grid-template-columns:33% 33% 33%;
+   grid-template-rows: 45% 45%;
+   grid-auto-flow: column;
+    &__cityName{
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: $primary-color;
+    }
+    &__icon{
+        text-align: center;
+        
+        &-sun{
+            font-size: 2.2rem;
+            margin-top: 5px;
+            color: #F6BE00;
+            filter:drop-shadow(1px 1px 10px yellow);
+        }
+        &-moon{
+            font-size: 2.2rem;
+            margin-top: 5px;
+            color: $third-color;
+            filter:drop-shadow(1px 1px 10px $third-color);
+        }
+        &-cloud{
+            margin-top: -35px;
+            font-size: 1.5rem;
+            color: rgb(104, 175, 197);
+            filter: drop-shadow( 1px 1px 5px rgb(104, 175, 197));
+            animation-name: cloudMovement;
+            animation-iteration-count: infinite;
+            animation-duration: 10s;
+            animation-timing-function: ease-in-out;
+            animation-direction: alternate;
+        }
+    }
+}
+
+@keyframes cloudMovement{
+    from{margin-left: -55px;}
+    to{margin-left: 65px;}
+}

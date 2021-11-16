@@ -1,0 +1,34 @@
+<div class="weather">
+    <div class="weather__icon">
+        <div *ngIf="WeatherData.isDay; else isNight">
+            <fa-icon class="weather__icon-sun" [icon]="sunIcon"></fa-icon>
+        </div>
+        <ng-template #isNight class="weather__icon-moon">
+            <fa-icon  [icon]="moonIcon"></fa-icon>
+        </ng-template>
+        <div class="weather__icon-cloud">
+            <fa-icon [icon]="cloudIcon"></fa-icon>
+        </div>
+    </div>
+
+    <div>
+        Temperature: {{WeatherData.temp_celcius}}°
+    </div>
+        
+    <div>
+        Min: {{WeatherData.temp_min}}° / Max: {{WeatherData.temp_min}}°
+    </div>
+
+    <div>
+        Feels like: {{WeatherData.temp_feels_like}}°
+    </div>
+
+    <div class="weather__cityName">
+        {{WeatherData.name}} 
+        <a> <fa-icon class="editName" [icon]="editIcon"></fa-icon></a>    
+    </div>
+
+    <div >
+        Humidity: {{WeatherData.main.humidity}}%
+    </div>
+</div>

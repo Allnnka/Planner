@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GetAllTaskComponent } from './task/get-all-task/get-all-task.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { WeatherComponent } from './workspace/weather/weather.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MatSortModule } from '@angular/material/sort';
     TaskInfoComponent,
     ModalComponent,
     GetAllTaskComponent,
+    WeatherComponent,
   ],
   imports: [
     BrowserModule,
