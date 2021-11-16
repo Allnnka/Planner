@@ -15,8 +15,6 @@ import { WorkspaceComponent } from './workspace/workspace.component';
 import { CreateTaskComponent } from './task/create-task/create-task.component';
 import { TokenInterceptor } from './token-interceptron';
 import { PlannerComponent } from './workspace/planner/planner.component';
-import { TaskInfoComponent } from './workspace/task-info/task-info.component';
-import { ModalComponent } from './modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GetAllTaskComponent } from './task/get-all-task/get-all-task.component';
 import { MatTableModule } from '@angular/material/table';
@@ -34,8 +32,6 @@ import { WeatherComponent } from './workspace/weather/weather.component';
     WorkspaceComponent,
     CreateTaskComponent,
     PlannerComponent,
-    TaskInfoComponent,
-    ModalComponent,
     GetAllTaskComponent,
     WeatherComponent,
   ],

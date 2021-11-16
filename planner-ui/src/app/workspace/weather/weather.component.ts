@@ -23,7 +23,6 @@ export class WeatherComponent implements OnInit {
       isDay:true
     }
     this.getWeatherData();
-    console.log(this.WeatherData);
   }
 
   getWeatherData(){

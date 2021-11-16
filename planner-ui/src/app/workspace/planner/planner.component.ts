@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalService } from 'src/app/modal/modal.service';
 import { TaskService } from 'src/app/shared/task.service';
 import { TaskPayload } from 'src/app/task/create-task/create-task.payload';
 import { GetThisWeekTasks } from 'src/app/utils/data.this.week';
-import { TaskInfoComponent } from '../task-info/task-info.component';
 
 @Component({
   selector: 'app-planner',
