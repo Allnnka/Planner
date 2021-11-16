@@ -1,11 +1,14 @@
 <div class="box">
     <div class="box__about box__cell">
-        <p >Hello {{auth.getUserName()}}</p>
-        <app-create-task></app-create-task>
+        <div>
+            <p>Hello {{auth.getUserName()}}</p>
+            <app-create-task></app-create-task>
+        </div>
+        <div class="box__alltasks">
+            <Button (click)="GetAllTasks()">See all tasks</Button>
+        </div>
     </div>
-    <div>
-        <Button (onClick)="GetAllTasks()">See all tasks</Button>
-    </div>
+    
     <div class="box__left box__cell">
         <div class="box__header">
             <div class="box__header-data">

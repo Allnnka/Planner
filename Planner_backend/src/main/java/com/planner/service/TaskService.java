@@ -38,4 +38,8 @@ public class TaskService {
     public List<Task> getAllTasks() {
         return taskRepository.findByUser(authService.getCurrentUser());
     }
+
+    public void deleteTask(Long id){
+        taskRepository.deleteById(id);
+    }
 }

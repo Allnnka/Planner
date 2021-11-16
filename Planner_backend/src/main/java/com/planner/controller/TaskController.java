@@ -30,4 +30,10 @@ public class TaskController {
     public ResponseEntity<List<Task>> getAllTasks(){
         return status(HttpStatus.OK).body(taskService.getAllTasks());
     }
+
+    @PostMapping("/delete")
+    public ResponseEntity<Void> deleteTask(@RequestBody Long id){
+        taskService.deleteTask(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

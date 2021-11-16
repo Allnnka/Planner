@@ -47,4 +47,19 @@
         width: 90%;
         min-height:280px;  
     }
+    &__alltasks{
+        margin-top: 100px;
+        button{
+            background-color: $secondary-text-color;
+            color: $primary-color;
+            padding: 10px;
+            width: 92%;
+            font-size: 1rem;
+            text-decoration: none;
+            border: none;
+            border-radius: 3px;
+            margin-right: 25px;
+           
+        }
+    }
 }

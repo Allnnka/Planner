@@ -20,6 +20,7 @@ import { ModalComponent } from './modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GetAllTaskComponent } from './task/get-all-task/get-all-task.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { MatTableModule } from '@angular/material/table';
     HttpClientModule,
     NgxWebstorageModule.forRoot(),
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    MatSortModule
   ],
   providers: [ 
     {

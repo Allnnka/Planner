@@ -15,4 +15,8 @@ export class TaskService {
   getAllTasks():Observable<any>{
     return this.http.get('http://localhost:8080/api/tasks/')
   }
+  deleteTask(id:number){
+    return this.http.post('http://localhost:8080/api/tasks/delete',id);
+  }
+
 }
